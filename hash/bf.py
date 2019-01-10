@@ -9,6 +9,7 @@ class bf:
     def __init__(self, size):
         self.size = size
         self.bitarray = bitarray.bitarray(size)
+        self.str = '0'*size
         self.list = [0]*size
         self.bitarray.setall(False)
         self.hash_functions = [hashlib.md5, hashlib.sha1, hashlib.sha224]
@@ -19,6 +20,7 @@ class bf:
             index = int(hash_func(data).hexdigest(), 16) % self.size
             self.bitarray[index] = 1
             self.list[index] = 1
+            self.str[index] = '1'
        
 
     def is_data_exist(self, data):
@@ -65,3 +67,4 @@ if __name__ == "__main__":
     print("{:20} {} bytes\n".format("bf list size:", sys.getsizeof(b.list)))
     print("{:20} {} bytes\n".format("set size:", sys.getsizeof(s)))
     print("{:20} {} bytes\n".format("dict size:", sys.getsizeof(d)))
+    print("{:20} {} bytes\n".format("dict size:", sys.getsizeof(b.str)))
